@@ -13,7 +13,7 @@ unset($composer['scripts']);
 
 do {
     $authorName = readline('Author name: ');
-    if (!preg_match('~^[a-z0-9]([_.-]?[a-z0-9]+)*/[a-z0-9](([_.]?|-{0,2})[a-z0-9]+)*$~', $projectName)) {
+    if (!preg_match('~^[a-z0-9]([_.-]?[a-z0-9]+)*/[a-z0-9](([_.]?|-{0,2})[a-z0-9]+)*$~', $authorName)) {
         echo 'Invalid namespace/name' . PHP_EOL;
         $projectName = null;
     }
