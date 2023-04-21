@@ -49,6 +49,8 @@ $composer['authors'] = [
 
 file_put_contents(__DIR__ . '/composer.json', json_encode($composer, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . PHP_EOL);
 
+file_put_contents(__DIR__ . '/manifest.xml', str_replace('%description%', htmlspecialchars($description), file_get_contents(__DIR__ . '/manifest.xml')));
+
 if (!mkdir($concurrentDirectory = __DIR__ . '/src') && !is_dir($concurrentDirectory)) {
     throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
 }
