@@ -1,0 +1,4 @@
+/vendor/
+/.credentials.json
+/.phpunit.result.cache
+/.storage
