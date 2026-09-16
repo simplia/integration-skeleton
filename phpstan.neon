@@ -1,3 +1,6 @@
+includes:
+    - vendor/simplia/api/phpstan-extension.neon
+
 parameters:
     level: 6
     paths:

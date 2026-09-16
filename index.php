@@ -7,9 +7,9 @@ use \Simplia\Integration\Event\Order\NewOrderEvent;
 return static function (Context $context, NewOrderEvent $orderEvent) {
 
     $order = $context->getApi()->getOrdersEndpoint()->get(
-        $orderEvent->getId(),
+        (int) $orderEvent->getId(),
         OrderApiEntity::createFieldConfig()
-            ->withDateCreated()
+            ->selectCreatedAt()
     );
 
     if (!$order) {
@@ -19,7 +19,7 @@ return static function (Context $context, NewOrderEvent $orderEvent) {
     $context->getClient()->request('POST', 'https://example.org/new-order', [
         'json' => [
             'code' => $order->getId(),
-            'date' => $order->getDateCreated(),
+            'date' => $order->getCreatedAt()->format(DATE_ATOM),
         ],
     ]);
 };
